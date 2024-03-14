@@ -24,8 +24,6 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             try session.setActive(true)
             session.requestRecordPermission { allowed in
                 if allowed {
-                    // Start recording
-                    //self.startRecording()
                     print("Audio permission granted")
                 } else {
                     // Handle permission not granted
