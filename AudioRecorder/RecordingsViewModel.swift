@@ -18,9 +18,7 @@ class RecordingsViewModel: ObservableObject {
         var newRecordings: [RecordingModel] = []
         let count = await audioRecorder.theRecordingsCount()
         for i in (0..<count).reversed() {
-            let recording = await RecordingModel(
-                id: i + 1
-            )
+            let recording = await RecordingModel(id: i + 1)
             newRecordings.append(recording)
         }
         let finalRecordings = newRecordings
