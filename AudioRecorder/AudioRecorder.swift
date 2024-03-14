@@ -20,9 +20,9 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         // Set up audio session
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(.playAndRecord, mode: .default)
+            try session.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
             try session.setActive(true)
-            session.requestRecordPermission { [unowned self] allowed in
+            session.requestRecordPermission { allowed in
                 if allowed {
                     // Start recording
                     //self.startRecording()

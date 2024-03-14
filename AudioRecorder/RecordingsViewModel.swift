@@ -18,7 +18,7 @@ class RecordingsViewModel: ObservableObject {
         let count = await audioRecorder.theRecordingsCount()
         let recording = await RecordingModel(id: count)
         await MainActor.run {
-            self.recordings.insert(recording, at:0) //= finalRecordings
+            self.recordings.insert(recording, at:0)
         }
     }
     
