@@ -21,6 +21,10 @@
 		F5BA60CB2BA2502A000ABCF1 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60CA2BA2502A000ABCF1 /* DateTests.swift */; };
 		F5BA60CE2BA25397000ABCF1 /* 046.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5BA60CC2BA25396000ABCF1 /* 046.mp3 */; };
 		F5BA60CF2BA253B1000ABCF1 /* 046.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5BA60CC2BA25396000ABCF1 /* 046.mp3 */; };
+		F5BA60D22BA25CF0000ABCF1 /* alert1.wav in Resources */ = {isa = PBXBuildFile; fileRef = F5BA60D02BA25CEF000ABCF1 /* alert1.wav */; };
+		F5BA60D32BA25CF0000ABCF1 /* alert3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F5BA60D12BA25CF0000ABCF1 /* alert3.wav */; };
+		F5BA60D52BA262A9000ABCF1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60D42BA262A8000ABCF1 /* Task.swift */; };
+		F5BA60D72BA2823B000ABCF1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60D62BA2823A000ABCF1 /* AudioRecorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,11 @@
 		F5BA60C72BA2294D000ABCF1 /* RecordingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsViewModel.swift; sourceTree = "<group>"; };
 		F5BA60CA2BA2502A000ABCF1 /* DateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		F5BA60CC2BA25396000ABCF1 /* 046.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 046.mp3; sourceTree = "<group>"; };
+		F5BA60D02BA25CEF000ABCF1 /* alert1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert1.wav; sourceTree = "<group>"; };
+		F5BA60D12BA25CF0000ABCF1 /* alert3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = alert3.wav; sourceTree = "<group>"; };
+		F5BA60D42BA262A8000ABCF1 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		F5BA60D62BA2823A000ABCF1 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
+		F5BA60D82BA28944000ABCF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +99,9 @@
 		F563205F2BA21FB50049C06E /* AudioRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				F5BA60D82BA28944000ABCF1 /* Info.plist */,
 				F56320602BA21FB50049C06E /* AudioRecorderApp.swift */,
+				F5BA60D62BA2823A000ABCF1 /* AudioRecorder.swift */,
 				F5BA60CD2BA25396000ABCF1 /* audio */,
 				F5BA60C62BA2294D000ABCF1 /* RecordingModel.swift */,
 				F5BA60C72BA2294D000ABCF1 /* RecordingsViewModel.swift */,
@@ -122,6 +133,7 @@
 		F5BA60BB2BA2292F000ABCF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				F5BA60D42BA262A8000ABCF1 /* Task.swift */,
 				F5BA60B82BA2292F000ABCF1 /* Data.swift */,
 				F5BA60B92BA2292F000ABCF1 /* Date.swift */,
 				F5BA60BA2BA2292F000ABCF1 /* String.swift */,
@@ -142,6 +154,8 @@
 			isa = PBXGroup;
 			children = (
 				F5BA60CC2BA25396000ABCF1 /* 046.mp3 */,
+				F5BA60D02BA25CEF000ABCF1 /* alert1.wav */,
+				F5BA60D12BA25CF0000ABCF1 /* alert3.wav */,
 			);
 			path = audio;
 			sourceTree = "<group>";
@@ -227,9 +241,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5BA60D32BA25CF0000ABCF1 /* alert3.wav in Resources */,
 				F5BA60CE2BA25397000ABCF1 /* 046.mp3 in Resources */,
 				F56320682BA21FBB0049C06E /* Preview Assets.xcassets in Resources */,
 				F56320652BA21FBB0049C06E /* Assets.xcassets in Resources */,
+				F5BA60D22BA25CF0000ABCF1 /* alert1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,9 +268,11 @@
 				F5BA60C92BA2294D000ABCF1 /* RecordingsViewModel.swift in Sources */,
 				F56320612BA21FB50049C06E /* AudioRecorderApp.swift in Sources */,
 				F5BA60C42BA22939000ABCF1 /* RecordingsView.swift in Sources */,
+				F5BA60D72BA2823B000ABCF1 /* AudioRecorder.swift in Sources */,
 				F5BA60BD2BA2292F000ABCF1 /* Date.swift in Sources */,
 				F5BA60C82BA2294D000ABCF1 /* RecordingModel.swift in Sources */,
 				F5BA60BE2BA2292F000ABCF1 /* String.swift in Sources */,
+				F5BA60D52BA262A9000ABCF1 /* Task.swift in Sources */,
 				F5BA60BC2BA2292F000ABCF1 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,13 +424,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = PHEF24B589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioRecorder/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to record audio for playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -434,13 +456,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
+				DEVELOPMENT_TEAM = PHEF24B589;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AudioRecorder/Info.plist;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to record audio for playback.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

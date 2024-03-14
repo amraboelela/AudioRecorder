@@ -15,20 +15,33 @@ struct RecordingsView: View {
             Text("Recordings")
                 .font(Font.body.weight(.bold))
             List(recordingsViewModel.recordings) { recording in
-                HStack {
-                    Text(recording.subject)
-                        .font(Font.body.weight(.bold))
-                    Spacer()
-                    Text("\(recording.formattedDuration)")
+                Button(action: {
+                    recording.play()
+                }) {
+                    HStack {
+                        Text(recording.subject)
+                            //.font(Font.body.weight(.bold))
+                        Spacer()
+                        Text("\(recording.formattedDuration)")
+                    }
                 }
             }
-            RecordButton(buttonTapped: {
-                print("Button tapped")
+            
+            RecordButton(buttonTapped: { isRecording in
+                if isRecording {
+                    Task {
+                        await recordingsViewModel.startRecording()
+                    }
+                } else {
+                    Task {
+                        await recordingsViewModel.stopRecording()
+                    }
+                }
             })
         }
     }
 }
 
 #Preview {
-    RecordingsView(recordingsViewModel: recordingsViewModel)
+    RecordingsView(recordingsViewModel: RecordingsViewModel())
 }

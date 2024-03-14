@@ -8,12 +8,22 @@
 import AVFoundation
 import SwiftUI
 
-struct RecordingModel: Hashable, Identifiable {
-    var id: Int // it holds the time stamp of the recording, as number of seconds since 1970
-    var message: Data
+class RecordingModel: Identifiable {
+    
+    var id: Int
+    var duration: TimeInterval = 0
+    
+    init(id: Int) async {
+        self.id = id
+        //Task {
+        await loadData()
+        //}
+    }
     
     static var sampleAudio: Data {
-        guard let audioURL = Bundle.main.url(forResource: "046", withExtension: "mp3") else {
+        let fileName = "alert1"
+        let fileExtension = "wav"
+        guard let audioURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension) else {
             print("Audio file not found")
             return Data()
         }
@@ -26,24 +36,34 @@ struct RecordingModel: Hashable, Identifiable {
     }
     
     var subject: String {
-        return Date(timeIntervalSince1970: TimeInterval(id)).dateString
+        return "Recording #\(id)" //Date(timeIntervalSince1970: TimeInterval(time)).dateString
     }
     
-    var duration: TimeInterval {
-        do {
-            // Create an AVAudioPlayer instance with the audio data
-            let audioPlayer = try AVAudioPlayer(data: message)
-            // Get the duration of the audio file
-            let duration = audioPlayer.duration
-            return duration
-        } catch {
-            print("Error creating AVAudioPlayer:", error.localizedDescription)
-            return 0
-        }
+    func loadData() async {
+        duration = await audioRecorder.durationForAudio(number: id) //5 //audioPlayer?.duration ?? 0
     }
     
     var formattedDuration: String {
         return Date.timeWith(seconds: duration)
     }
 
+    func play() {
+        Task {
+            await audioRecorder.playRecording(number: id)
+        }
+        /*audioPlayer?.prepareToPlay()
+        // Start playing the audio
+        audioPlayer?.play()*/
+    }
 }
+
+/*
+extension RecordingModel: Hashable {
+    static func == (lhs: RecordingModel, rhs: RecordingModel) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}*/

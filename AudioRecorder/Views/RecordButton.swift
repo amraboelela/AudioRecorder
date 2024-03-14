@@ -12,11 +12,11 @@ struct RecordButton: View {
     @State var isRecording = false
     @State private var rectSize: CGFloat
     @State private var rectCornerRadius: CGFloat
-    var buttonTapped: () -> ()
+    var buttonTapped: (Bool) -> ()
     
     init(
         size: CGFloat = 60.0,
-        buttonTapped: @escaping () -> ()
+        buttonTapped: @escaping (Bool) -> ()
     ) {
         self.size = size
         self.buttonTapped = buttonTapped
@@ -32,7 +32,7 @@ struct RecordButton: View {
                     rectSize = isRecording ? size * 0.5 : size * 0.9
                     rectCornerRadius = isRecording ? size * 0.1 : size * 0.9
                 }
-                buttonTapped()
+                buttonTapped(isRecording)
             },
             label: {
                 Circle()
@@ -54,7 +54,8 @@ struct RecordButton: View {
 #Preview {
     RecordButton(
         size: 70,
-        buttonTapped: {
+        buttonTapped: { isRecording in
+            print("isRecording: \(isRecording)")
         }
     )
 }
