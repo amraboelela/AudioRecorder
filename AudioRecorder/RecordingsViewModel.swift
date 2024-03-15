@@ -12,13 +12,16 @@ class RecordingsViewModel: ObservableObject {
     @Published var recordings = [RecordingModel]()
     
     init() {
+        Task {
+            await startRecording()
+        }
     }
     
     func addRecording() async {
         let count = await audioRecorder.theRecordingsCount()
         let recording = await RecordingModel(id: count)
         await MainActor.run {
-            self.recordings.insert(recording, at:0)
+            recordings.insert(recording, at:0)
         }
     }
     

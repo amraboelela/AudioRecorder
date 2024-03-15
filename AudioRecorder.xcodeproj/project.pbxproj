@@ -14,7 +14,6 @@
 		F5BA60BC2BA2292F000ABCF1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60B82BA2292F000ABCF1 /* Data.swift */; };
 		F5BA60BD2BA2292F000ABCF1 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60B92BA2292F000ABCF1 /* Date.swift */; };
 		F5BA60BE2BA2292F000ABCF1 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60BA2BA2292F000ABCF1 /* String.swift */; };
-		F5BA60C32BA22939000ABCF1 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60BF2BA22939000ABCF1 /* RecordButton.swift */; };
 		F5BA60C42BA22939000ABCF1 /* RecordingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60C02BA22939000ABCF1 /* RecordingsView.swift */; };
 		F5BA60C82BA2294D000ABCF1 /* RecordingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60C62BA2294D000ABCF1 /* RecordingModel.swift */; };
 		F5BA60C92BA2294D000ABCF1 /* RecordingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60C72BA2294D000ABCF1 /* RecordingsViewModel.swift */; };
@@ -25,6 +24,8 @@
 		F5BA60D32BA25CF0000ABCF1 /* alert3.wav in Resources */ = {isa = PBXBuildFile; fileRef = F5BA60D12BA25CF0000ABCF1 /* alert3.wav */; };
 		F5BA60D52BA262A9000ABCF1 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60D42BA262A8000ABCF1 /* Task.swift */; };
 		F5BA60D72BA2823B000ABCF1 /* AudioRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60D62BA2823A000ABCF1 /* AudioRecorder.swift */; };
+		F5BA60DD2BA3B83E000ABCF1 /* MicrophoneButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60DB2BA3B83E000ABCF1 /* MicrophoneButton.swift */; };
+		F5BA60E02BA3BB6D000ABCF1 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BA60DF2BA3BB6D000ABCF1 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,6 @@
 		F5BA60B82BA2292F000ABCF1 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		F5BA60B92BA2292F000ABCF1 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		F5BA60BA2BA2292F000ABCF1 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		F5BA60BF2BA22939000ABCF1 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		F5BA60C02BA22939000ABCF1 /* RecordingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsView.swift; sourceTree = "<group>"; };
 		F5BA60C62BA2294D000ABCF1 /* RecordingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingModel.swift; sourceTree = "<group>"; };
 		F5BA60C72BA2294D000ABCF1 /* RecordingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsViewModel.swift; sourceTree = "<group>"; };
@@ -58,6 +58,8 @@
 		F5BA60D42BA262A8000ABCF1 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		F5BA60D62BA2823A000ABCF1 /* AudioRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRecorder.swift; sourceTree = "<group>"; };
 		F5BA60D82BA28944000ABCF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F5BA60DB2BA3B83E000ABCF1 /* MicrophoneButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MicrophoneButton.swift; sourceTree = "<group>"; };
+		F5BA60DF2BA3BB6D000ABCF1 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,10 +135,11 @@
 		F5BA60BB2BA2292F000ABCF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				F5BA60D42BA262A8000ABCF1 /* Task.swift */,
+				F5BA60DF2BA3BB6D000ABCF1 /* Color.swift */,
 				F5BA60B82BA2292F000ABCF1 /* Data.swift */,
 				F5BA60B92BA2292F000ABCF1 /* Date.swift */,
 				F5BA60BA2BA2292F000ABCF1 /* String.swift */,
+				F5BA60D42BA262A8000ABCF1 /* Task.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,7 +147,7 @@
 		F5BA60C22BA22939000ABCF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F5BA60BF2BA22939000ABCF1 /* RecordButton.swift */,
+				F5BA60DB2BA3B83E000ABCF1 /* MicrophoneButton.swift */,
 				F5BA60C02BA22939000ABCF1 /* RecordingsView.swift */,
 			);
 			path = Views;
@@ -264,9 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5BA60C32BA22939000ABCF1 /* RecordButton.swift in Sources */,
 				F5BA60C92BA2294D000ABCF1 /* RecordingsViewModel.swift in Sources */,
 				F56320612BA21FB50049C06E /* AudioRecorderApp.swift in Sources */,
+				F5BA60E02BA3BB6D000ABCF1 /* Color.swift in Sources */,
+				F5BA60DD2BA3B83E000ABCF1 /* MicrophoneButton.swift in Sources */,
 				F5BA60C42BA22939000ABCF1 /* RecordingsView.swift in Sources */,
 				F5BA60D72BA2823B000ABCF1 /* AudioRecorder.swift in Sources */,
 				F5BA60BD2BA2292F000ABCF1 /* Date.swift in Sources */,
@@ -421,6 +425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
@@ -442,6 +447,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = amr.AudioRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -453,6 +459,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AudioRecorder/Preview Content\"";
@@ -474,6 +481,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = amr.AudioRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

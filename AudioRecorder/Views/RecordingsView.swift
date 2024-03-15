@@ -20,14 +20,13 @@ struct RecordingsView: View {
                 }) {
                     HStack {
                         Text(recording.subject)
-                            //.font(Font.body.weight(.bold))
                         Spacer()
                         Text("\(recording.formattedDuration)")
                     }
                 }
             }
             
-            RecordButton(buttonTapped: { isRecording in
+            MicrophoneButton(buttonTapped: { isRecording in
                 if isRecording {
                     Task {
                         await recordingsViewModel.startRecording()
@@ -38,6 +37,7 @@ struct RecordingsView: View {
                     }
                 }
             })
+            .padding(15)
         }
     }
 }
