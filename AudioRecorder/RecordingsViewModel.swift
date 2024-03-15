@@ -12,9 +12,6 @@ class RecordingsViewModel: ObservableObject {
     @Published var recordings = [RecordingModel]()
     
     init() {
-        Task {
-            await startRecording()
-        }
     }
     
     func addRecording() async {

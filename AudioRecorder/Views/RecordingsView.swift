@@ -25,19 +25,26 @@ struct RecordingsView: View {
                     }
                 }
             }
-            
-            MicrophoneButton(buttonTapped: { isRecording in
-                if isRecording {
-                    Task {
-                        await recordingsViewModel.startRecording()
-                    }
-                } else {
-                    Task {
-                        await recordingsViewModel.stopRecording()
+            MicrophoneButton(
+                buttonTapped: { isRecording in
+                    if isRecording {
+                        Task {
+                            await recordingsViewModel.startRecording()
+                        }
+                    } else {
+                        Task {
+                            await recordingsViewModel.stopRecording()
+                        }
                     }
                 }
-            })
+            )
             .padding(15)
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            print("RecordingsView, coming back!")
+            Task {
+                await recordingsViewModel.startRecording()
+            }
         }
     }
 }

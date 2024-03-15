@@ -53,6 +53,11 @@ struct MicrophoneButton: View {
         .onAppear {
             animate()
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            print("coming back!")
+            isRecording = true
+            animate()
+        }
     }
 }
 

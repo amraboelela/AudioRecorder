@@ -44,6 +44,7 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
     func theRecordingsCount() -> Int {
         return recordingsCount
     }
+    
     func startRecording() {
         // Set up audio file path
         recordingsCount += 1
