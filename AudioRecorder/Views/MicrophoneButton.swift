@@ -34,7 +34,6 @@ struct MicrophoneButton: View {
             Circle()
                 .fill(isRecording ? .blue : .white)
                 .frame(width: 80, height: 80)
-                .opacity(1)
                 .overlay(
                     Circle()
                         .stroke(Color.white, lineWidth: 5)
