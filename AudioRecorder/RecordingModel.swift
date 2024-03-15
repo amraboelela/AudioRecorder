@@ -15,9 +15,7 @@ class RecordingModel: Identifiable {
     
     init(id: Int) async {
         self.id = id
-        //Task {
         await loadData()
-        //}
     }
     
     static var sampleAudio: Data {
@@ -36,11 +34,11 @@ class RecordingModel: Identifiable {
     }
     
     var subject: String {
-        return "Recording #\(id)" //Date(timeIntervalSince1970: TimeInterval(time)).dateString
+        return "Recording #\(id)"
     }
     
     func loadData() async {
-        duration = await audioRecorder.durationForAudio(number: id) //5 //audioPlayer?.duration ?? 0
+        duration = await audioRecorder.durationForAudio(number: id)
     }
     
     var formattedDuration: String {
@@ -51,19 +49,5 @@ class RecordingModel: Identifiable {
         Task {
             await audioRecorder.playRecording(number: id)
         }
-        /*audioPlayer?.prepareToPlay()
-        // Start playing the audio
-        audioPlayer?.play()*/
     }
 }
-
-/*
-extension RecordingModel: Hashable {
-    static func == (lhs: RecordingModel, rhs: RecordingModel) -> Bool {
-        return lhs.id == rhs.id
-    }
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}*/

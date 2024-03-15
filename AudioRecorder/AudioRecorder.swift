@@ -63,6 +63,7 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
             audioRecorder?.delegate = self
             audioRecorder?.record()
         } catch {
+            recordingsCount -= 1
             // Handle audio recorder initialization errors
             print("Error initializing audio recorder: \(error.localizedDescription)")
         }
@@ -76,16 +77,6 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         // to free up memory once recording is finished
         audioRecorder = nil
     }
-    
-    /*func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        if flag {
-            // Audio recording finished successfully
-            print("Audio recording finished successfully.")
-        } else {
-            // Audio recording failed
-            print("Audio recording failed.")
-        }
-    }*/
     
     func playRecording(number: Int) {
         let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
