@@ -9,7 +9,7 @@ import AVFoundation
 
 let audioRecorder = AudioRecorder()
 
-actor AudioRecorder: NSObject, AVAudioRecorderDelegate {
+class AudioRecorder: NSObject, AVAudioRecorderDelegate {
     var audioRecorder: AVAudioRecorder?
     var audioPlayer: AVAudioPlayer?
     private var recordingsCount = 0
@@ -144,15 +144,15 @@ actor AudioRecorder: NSObject, AVAudioRecorderDelegate {
 }
 
 extension AudioRecorder: AVAudioPlayerDelegate {
-    nonisolated func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         // This method will be called when the audio playback finishes
         if flag {
             print("Audio playback finished successfully")
-            Task {
-                await audioPlayer?.stop()
-                //audioPlayer = nil
-                await playingCallback?()
-            }
+            //Task {
+            audioPlayer?.stop()
+            //audioPlayer = nil
+            playingCallback?()
+            //}
         } else {
             print("Audio playback finished with error")
         }

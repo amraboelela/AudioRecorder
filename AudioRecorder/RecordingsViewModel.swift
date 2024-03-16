@@ -14,23 +14,23 @@ class RecordingsViewModel: ObservableObject {
     init() {
     }
     
-    func addRecording() async {
-        let count = await audioRecorder.theRecordingsCount()
-        let recording = await RecordingModel(id: count)
-        await MainActor.run {
-            recordings.insert(recording, at:0)
-        }
+    func addRecording() {
+        let count = audioRecorder.theRecordingsCount()
+        let recording = RecordingModel(id: count)
+        //await MainActor.run {
+        recordings.insert(recording, at:0)
+        //}
     }
     
-    func startRecording() async {
+    func startRecording() {
         print("startRecording")
-        await audioRecorder.startRecording()
+        audioRecorder.startRecording()
     }
     
-    func stopRecording() async {
+    func stopRecording() {
         print("stopRecording")
-        await audioRecorder.stopRecording()
-        await addRecording()
+        audioRecorder.stopRecording()
+        addRecording()
     }
     
     func stopAll() {

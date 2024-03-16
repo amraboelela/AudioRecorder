@@ -21,9 +21,9 @@ class RecordingModel: Identifiable {
     var duration: TimeInterval = 0
     var status = RecordingStatus.stopped
     
-    init(id: Int) async {
+    init(id: Int) {
         self.id = id
-        await loadData()
+        loadData()
     }
     
     static var sampleAudio: Data {
@@ -45,9 +45,9 @@ class RecordingModel: Identifiable {
         return "Recording #\(id)"
     }
     
-    func loadData() async {
-        duration = await audioRecorder.durationForAudio(number: id)
-        date = await audioRecorder.timeForAudio(number: id)
+    func loadData() {
+        duration = audioRecorder.durationForAudio(number: id)
+        date = audioRecorder.timeForAudio(number: id)
     }
     
     var formattedDuration: String {
@@ -63,43 +63,43 @@ class RecordingModel: Identifiable {
         case .paused:
             status = .playing
             Task {
-                await audioRecorder.continuePlaying(number: id) {
-                    Task {
-                        await MainActor.run {
-                            self.status = .stopped
-                            callback()
-                        }
-                    }
+                audioRecorder.continuePlaying(number: id) {
+                    //Task {
+                    //  await MainActor.run {
+                    self.status = .stopped
+                    callback()
+                    //}
+                    //}
                 }
             }
         case .playing:
             status = .playing
         case .stopped:
             status = .playing
-            Task {
-                await audioRecorder.play(number: id) {
-                    Task {
-                        await MainActor.run {
-                            self.status = .stopped
-                            callback()
-                        }
-                    }
-                }
+            //Task {
+            audioRecorder.play(number: id) {
+                //Task {
+                //  await MainActor.run {
+                self.status = .stopped
+                callback()
+                //}
+                //}
             }
+            //}
         }
     }
     
     func pause() {
         status = .paused
-        Task {
-            await audioRecorder.pause(number: id)
-        }
+        //Task {
+        audioRecorder.pause(number: id)
+        //}
     }
     
     func stop() {
         status = .stopped
-        Task {
-            await audioRecorder.stop(number: id)
-        }
+        //Task {
+        audioRecorder.stop(number: id)
+        //}
     }
 }
