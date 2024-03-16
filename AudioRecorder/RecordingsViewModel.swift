@@ -32,5 +32,15 @@ class RecordingsViewModel: ObservableObject {
         await audioRecorder.stopRecording()
         await addRecording()
     }
+    
+    func stopAll() {
+        for recording in recordings {
+            recording.stop()
+        }
+    }
+    
+    func reloadUI() {
+        recordings = recordings
+    }
 }
 

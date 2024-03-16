@@ -30,25 +30,29 @@ struct MicrophoneButton: View {
     }
     
     var body: some View {
-        ZStack {
-            Circle()
-                .fill(isRecording ? .blue : .white)
-                .frame(width: 80, height: 80)
-                .overlay(
-                    Circle()
-                        .stroke(Color.white, lineWidth: 5)
-                        .opacity(circleOpacity)
-                        .scaleEffect(scaleEffect)
-                )
-                .shadow(radius: 7)
-            Image(systemName: "mic.fill")
-                .font(.system(size: 30))
-                .foregroundColor(isRecording ? .white : .blue)
-                .onTapGesture {
-                    isRecording.toggle()
-                    animate()
-                    buttonTapped(isRecording)
-                }
+        HStack {
+            Spacer() // Pushes MicrophoneButton to the left edge of the screen
+            ZStack {
+                Circle()
+                    .fill(isRecording ? .blue : .white)
+                    .frame(width: 80, height: 80)
+                    .overlay(
+                        Circle()
+                            .stroke(Color.white, lineWidth: 5)
+                            .opacity(circleOpacity)
+                            .scaleEffect(scaleEffect)
+                    )
+                    .shadow(radius: 7)
+                Image(systemName: "mic.fill")
+                    .font(.system(size: 30))
+                    .foregroundColor(isRecording ? .white : .blue)
+                    .onTapGesture {
+                        isRecording.toggle()
+                        animate()
+                        buttonTapped(isRecording)
+                    }
+            }
+            Spacer() // Pushes MicrophoneButton to the right edge of the screen
         }
         .onAppear {
             animate()
