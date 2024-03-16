@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import Combine
 import SwiftUI
 
 enum RecordingStatus {
@@ -18,11 +19,20 @@ class RecordingModel: Identifiable {
     
     var id: Int
     var date = Date()
-    var duration: TimeInterval = 0
+    @Published var duration: TimeInterval = 0
     var status = RecordingStatus.stopped
+    private var cancellables = Set<AnyCancellable>()
     
-    init(id: Int) {
+    init(id: Int, callback: @escaping (RecordingModel) -> ()) {
         self.id = id
+        $duration
+            .sink { newDuration in
+                print("duration got updates, newDuration: \(newDuration)")
+                if newDuration > 0 {
+                    callback(self)
+                }
+            }
+            .store(in: &cancellables)
         loadData()
     }
     
@@ -41,13 +51,19 @@ class RecordingModel: Identifiable {
         }
     }
     
-    var subject: String {
-        return "Recording #\(id)"
+    func loadData() {
+        Task {
+            let theDate = audioRecorder.timeForAudio(number: id)
+            let theDuration = audioRecorder.durationForAudio(number: id)
+            await MainActor.run {
+                self.date = theDate
+                self.duration = theDuration
+            }
+        }
     }
     
-    func loadData() {
-        duration = audioRecorder.durationForAudio(number: id)
-        date = audioRecorder.timeForAudio(number: id)
+    var subject: String {
+        return "Recording #\(id)"
     }
     
     var formattedDuration: String {

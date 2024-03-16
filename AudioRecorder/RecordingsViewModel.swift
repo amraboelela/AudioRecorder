@@ -16,10 +16,9 @@ class RecordingsViewModel: ObservableObject {
     
     func addRecording() {
         let count = audioRecorder.theRecordingsCount()
-        let recording = RecordingModel(id: count)
-        //await MainActor.run {
-        recordings.insert(recording, at:0)
-        //}
+        _ = RecordingModel(id: count) { [weak self] recording in
+            self?.recordings.insert(recording, at:0)
+        }
     }
     
     func startRecording() {

@@ -59,13 +59,9 @@ struct RecordingsView: View {
             MicrophoneButton(
                 buttonTapped: { isRecording in
                     if isRecording {
-                        //Task {
                         recordingsViewModel.startRecording()
-                        //}
                     } else {
-                        //Task {
                         recordingsViewModel.stopRecording()
-                        //}
                     }
                 }
             )
@@ -74,9 +70,7 @@ struct RecordingsView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             print("RecordingsView, coming back!")
-            //Task {
             recordingsViewModel.startRecording()
-            //}
         }
     }
 }
