@@ -61,7 +61,9 @@ struct RecordingsView: View {
                     if isRecording {
                         recordingsViewModel.startRecording()
                     } else {
-                        recordingsViewModel.stopRecording()
+                        Task {
+                            await recordingsViewModel.stopRecording()
+                        }
                     }
                 }
             )

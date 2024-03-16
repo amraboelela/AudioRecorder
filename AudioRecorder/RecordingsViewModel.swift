@@ -14,10 +14,11 @@ class RecordingsViewModel: ObservableObject {
     init() {
     }
     
-    func addRecording() {
+    func addRecording() async {
         let count = audioRecorder.theRecordingsCount()
-        _ = RecordingModel(id: count) { [weak self] recording in
-            self?.recordings.insert(recording, at:0)
+        let recording = await RecordingModel(id: count)
+        await MainActor.run {
+            recordings.insert(recording, at:0)
         }
     }
     
@@ -26,10 +27,10 @@ class RecordingsViewModel: ObservableObject {
         audioRecorder.startRecording()
     }
     
-    func stopRecording() {
+    func stopRecording() async {
         print("stopRecording")
         audioRecorder.stopRecording()
-        addRecording()
+        await addRecording()
     }
     
     func stopAll() {

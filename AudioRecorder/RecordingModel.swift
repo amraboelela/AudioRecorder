@@ -6,7 +6,6 @@
 //
 
 import AVFoundation
-import Combine
 import SwiftUI
 
 enum RecordingStatus {
@@ -19,21 +18,12 @@ class RecordingModel: Identifiable {
     
     var id: Int
     var date = Date()
-    @Published var duration: TimeInterval = 0
+    var duration: TimeInterval = 0
     var status = RecordingStatus.stopped
-    private var cancellables = Set<AnyCancellable>()
     
-    init(id: Int, callback: @escaping (RecordingModel) -> ()) {
+    init(id: Int) async {
         self.id = id
-        $duration
-            .sink { newDuration in
-                print("duration got updates, newDuration: \(newDuration)")
-                if newDuration > 0 {
-                    callback(self)
-                }
-            }
-            .store(in: &cancellables)
-        loadData()
+        await loadData()
     }
     
     static var sampleAudio: Data {
@@ -51,15 +41,9 @@ class RecordingModel: Identifiable {
         }
     }
     
-    func loadData() {
-        Task {
-            let theDate = audioRecorder.timeForAudio(number: id)
-            let theDuration = audioRecorder.durationForAudio(number: id)
-            await MainActor.run {
-                self.date = theDate
-                self.duration = theDuration
-            }
-        }
+    func loadData() async {
+        date = await audioRecorder.timeForAudio(number: id)
+        duration = await audioRecorder.durationForAudio(number: id)
     }
     
     var subject: String {
@@ -80,42 +64,28 @@ class RecordingModel: Identifiable {
             status = .playing
             Task {
                 audioRecorder.continuePlaying(number: id) {
-                    //Task {
-                    //  await MainActor.run {
                     self.status = .stopped
                     callback()
-                    //}
-                    //}
                 }
             }
         case .playing:
             status = .playing
         case .stopped:
             status = .playing
-            //Task {
             audioRecorder.play(number: id) {
-                //Task {
-                //  await MainActor.run {
                 self.status = .stopped
                 callback()
-                //}
-                //}
             }
-            //}
         }
     }
     
     func pause() {
         status = .paused
-        //Task {
         audioRecorder.pause(number: id)
-        //}
     }
     
     func stop() {
         status = .stopped
-        //Task {
         audioRecorder.stop(number: id)
-        //}
     }
 }

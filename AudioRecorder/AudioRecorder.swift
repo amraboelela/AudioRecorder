@@ -108,38 +108,47 @@ class AudioRecorder: NSObject, AVAudioRecorderDelegate {
         audioPlayer = nil
     }
     
-    func durationForAudio(number: Int) -> TimeInterval {
-        let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
-        
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: audioFileURL)
-            return audioPlayer?.duration ?? 0
-        } catch {
-            // Handle audio player initialization errors
-            print("Error initializing audio player: \(error.localizedDescription)")
+    func durationForAudio(number: Int) async -> TimeInterval {
+        return await withCheckedContinuation { continuation in
+            Task {
+                let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: audioFileURL)
+                    continuation.resume(returning: audioPlayer?.duration ?? 0)
+                } catch {
+                    // Handle audio player initialization errors
+                    print("Error initializing audio player: \(error.localizedDescription)")
+                    continuation.resume(returning: 0)
+                }
+            }
         }
-        return 0
     }
     
-    func timeForAudio(number: Int) -> Date {
-        let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
-        
-        let fileManager = FileManager.default
+    func timeForAudio(number: Int) async -> Date {
+        return await withCheckedContinuation { continuation in
+            Task {
+                let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
+                
+                let fileManager = FileManager.default
 
-        do {
-            // Get the attributes of the file
-            let attributes = try fileManager.attributesOfItem(atPath: audioFileURL.path)
-            
-            // Extract the creation date from the attributes
-            if let creationDate = attributes[.creationDate] as? Date {
-                print("File creation date:", creationDate)
-            } else {
-                print("Creation date not found")
+                do {
+                    // Get the attributes of the file
+                    let attributes = try fileManager.attributesOfItem(atPath: audioFileURL.path)
+                    
+                    // Extract the creation date from the attributes
+                    if let creationDate = attributes[.creationDate] as? Date {
+                        print("File creation date:", creationDate)
+                        continuation.resume(returning: creationDate)
+                    } else {
+                        print("Creation date not found")
+                        continuation.resume(returning: Date())
+                    }
+                } catch {
+                    print("Error: \(error)")
+                    continuation.resume(returning: Date())
+                }
             }
-        } catch {
-            print("Error: \(error)")
         }
-        return Date()
     }
 }
 
@@ -148,11 +157,8 @@ extension AudioRecorder: AVAudioPlayerDelegate {
         // This method will be called when the audio playback finishes
         if flag {
             print("Audio playback finished successfully")
-            //Task {
             audioPlayer?.stop()
-            //audioPlayer = nil
             playingCallback?()
-            //}
         } else {
             print("Audio playback finished with error")
         }
