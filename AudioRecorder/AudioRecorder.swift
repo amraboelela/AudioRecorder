@@ -124,23 +124,19 @@ class AudioRecorder: NSObject, AVAudioRecorderDelegate {
         }
     }
     
-    func timeForAudio(number: Int) async -> Date {
+    func dateForAudio(number: Int) async -> Date {
         return await withCheckedContinuation { continuation in
             Task {
                 let audioFileURL = documentsDirectory.appendingPathComponent("recording\(number).m4a")
-                
                 let fileManager = FileManager.default
-
                 do {
-                    // Get the attributes of the file
                     let attributes = try fileManager.attributesOfItem(atPath: audioFileURL.path)
                     
-                    // Extract the creation date from the attributes
-                    if let creationDate = attributes[.creationDate] as? Date {
-                        print("File creation date:", creationDate)
-                        continuation.resume(returning: creationDate)
+                    if let modificationDate = attributes[.modificationDate] as? Date {
+                        print("File modificationDate date:", modificationDate)
+                        continuation.resume(returning: modificationDate)
                     } else {
-                        print("Creation date not found")
+                        print("ModificationDate date not found")
                         continuation.resume(returning: Date())
                     }
                 } catch {

@@ -42,7 +42,7 @@ class RecordingModel: Identifiable {
     }
     
     func loadData() async {
-        date = await audioRecorder.timeForAudio(number: id)
+        date = await audioRecorder.dateForAudio(number: id)
         duration = await audioRecorder.durationForAudio(number: id)
     }
     
