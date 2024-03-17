@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RecordingsView: View {
-    @ObservedObject var recordingsViewModel: RecordingsViewModel
+    @StateObject var recordingsViewModel = RecordingsViewModel()
     @State var playImage = "play.circle"
     
     func playImageFor(_ recording: RecordingModel) -> String {
@@ -78,5 +78,5 @@ struct RecordingsView: View {
 }
 
 #Preview {
-    RecordingsView(recordingsViewModel: RecordingsViewModel())
+    RecordingsView()
 }

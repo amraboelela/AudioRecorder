@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class RecordingsViewModel: ObservableObject {
     @Published var recordings = [RecordingModel]()
     
@@ -17,9 +18,7 @@ class RecordingsViewModel: ObservableObject {
     func addRecording() async {
         let count = audioRecorder.theRecordingsCount()
         let recording = await RecordingModel(id: count)
-        await MainActor.run {
-            recordings.insert(recording, at:0)
-        }
+        recordings.insert(recording, at:0)
     }
     
     func startRecording() {
